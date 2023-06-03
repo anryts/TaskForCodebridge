@@ -40,7 +40,7 @@ app.MapGet("/ping", (ISwaggerProvider swaggerProvider) =>
     var message = $"{title} Version {version}";
 
     return Task.FromResult(Results.Ok(message));
-});
+}).RequireRateLimiting("fixed");
 
 using (var scope = app.Services.CreateScope())
 {

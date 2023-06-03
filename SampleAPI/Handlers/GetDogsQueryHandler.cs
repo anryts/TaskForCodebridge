@@ -7,7 +7,7 @@ namespace SampleAPI.Handlers;
 
 public class GetDogsQuery : IRequest<List<Dog>>
 {
-    public DogFilter? Filter { get; init; }
+    public DogFilter Filter { get; init; }
 }
 
 public class GetDogsQueryHandler : IRequestHandler<GetDogsQuery, List<Dog>>

@@ -29,7 +29,7 @@ public class DogRepository : IDogRepository
         var query = _dbContext.Set<Dog>().AsQueryable();
 
         //Sorting
-        if (!string.IsNullOrEmpty(filter?.Attribute))
+        if (!string.IsNullOrEmpty(filter.Attribute))
         {
             var property = typeof(Dog).GetProperty(filter.Attribute,
                 BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
@@ -58,7 +58,7 @@ public class DogRepository : IDogRepository
 
         // Pagination
         var dogs = await query
-            .Skip(((filter!.PageNumber - 1) * filter.PageSize))
+            .Skip((filter.PageNumber - 1) * filter.PageSize)
             .Take(filter.PageSize)
             .ToListAsync();
 
